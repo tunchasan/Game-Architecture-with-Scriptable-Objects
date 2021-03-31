@@ -1,7 +1,9 @@
-﻿using Project.Architecture.ScriptableObjects.Variables;
+﻿using System;
+using Project.Architecture.ScriptableObjects.Variables;
 
 namespace Project.Architecture
 {
+    [Serializable]
     public class FloatReference
     {
         public FloatVariable Variable;
