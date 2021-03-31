@@ -10,6 +10,6 @@ namespace Project.Architecture
         
         public FloatReference(){}
 
-        public float Value => Variable.Value;
+        public float Value => Variable;
     }
 }

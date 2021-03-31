@@ -11,11 +11,14 @@ namespace Project.Architecture.ScriptableObjects.Variables
 
         [SerializeField] private float value;
 
-        public float Value => value;
-
         public void SetValue(float newValue)
         {
             value = newValue;
+        }
+        
+        public static implicit operator float(FloatVariable reference)
+        {
+            return reference.value;
         }
     }
 }

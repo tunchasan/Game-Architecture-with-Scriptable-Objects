@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Project;
 using Project.Architecture;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Project
 {
-    [SerializeField] private FloatReference Health;
-    
-    
+    [RequireComponent(typeof(PlayerController))]
+    public class Player : MonoBehaviour
+    {
+        [SerializeField] private FloatReference Health;
+    }
 }
+
+
