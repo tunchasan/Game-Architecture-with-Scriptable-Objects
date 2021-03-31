@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   description: Defines player's health
-  value: -20
+  value: 100
