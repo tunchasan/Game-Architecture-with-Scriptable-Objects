@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Project.Architecture;
+using Project.Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Project
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private FloatReference playerSpeed;
+        [SerializeField] private UnityEvent damageEvent;
+
+        [SerializeField] private UnityEvent deathEvent;
         
         private Player _player = null;
 
@@ -29,7 +33,22 @@ namespace Project
         {
             var moveNormal = new Vector3(_horizontal, _vertical, 0.0f).normalized;
 
-            transform.position += moveNormal * (Time.deltaTime * playerSpeed.Value);
+            transform.position += moveNormal * (Time.deltaTime * _player.Speed);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out ICanDamage actor))
+            {
+                _player.Health.ApplyChange(-actor.DamageAmount());
+                
+                damageEvent?.Invoke();
+
+                if (_player.Health <= 0)
+                {
+                    deathEvent?.Invoke();
+                }
+            }
         }
     }
 }

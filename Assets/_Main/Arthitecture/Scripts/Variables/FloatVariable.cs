@@ -20,6 +20,11 @@ namespace Project.Architecture.ScriptableObjects.Variables
         {
             return reference.value;
         }
+
+        public void ApplyChange(float applyValue)
+        {
+            value += applyValue;
+        }
     }
 }
 
